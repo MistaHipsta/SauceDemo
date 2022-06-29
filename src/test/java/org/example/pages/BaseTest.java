@@ -12,6 +12,8 @@ public class BaseTest {
 
     WebDriver driver;
     LoginPage loginPage;
+    ProductsPage productsPage;
+    CartPage cartPage;
 
     @BeforeMethod
     public void setDriver() {
@@ -20,6 +22,8 @@ public class BaseTest {
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         loginPage = new LoginPage(driver);
+        productsPage = new ProductsPage(driver);
+
     }
 
     @AfterMethod(alwaysRun = true)

@@ -3,34 +3,36 @@ package org.example.pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class LoginPage {
-
-    WebDriver driver;
+public class LoginPage  extends BasePage{
 
 
-
-    private By userNameInput = By.id("user-name");
-    private By passwordInput = By.id("password");
-    private By loginButton = By.id("login-button");
-    private By error = By.cssSelector("h3[data-test=error]");
+    private final By USER_NAME_INPUT = By.id("user-name");
+    private final By PASSWORD_INPUT = By.id("password");
+    private final By LOGIN_BUTTON = By.id("login-button");
+    private final By ERROR = By.cssSelector("h3[data-test=error]");
 
     public LoginPage(WebDriver driver) {
-        this.driver = driver;
+        super(driver);
     }
 
     public void open(){
-        driver.get("https://www.saucedemo.com");
+        driver.get(BASE_URL);
     }
+
 
     public void login(String username, String password){
 
-        driver.findElement(userNameInput).sendKeys(username);
-        driver.findElement(passwordInput).sendKeys(password);
-        driver.findElement(loginButton).submit();
+        driver.findElement(USER_NAME_INPUT).sendKeys(username);
+        driver.findElement(PASSWORD_INPUT).sendKeys(password);
+        driver.findElement(LOGIN_BUTTON).submit();
+    }
+
+    public void loginAsValidUser(){
+        login("standard_user","secret_sauce");
     }
 
 
     public String getError(){
-       return driver.findElement(error).getText();
+       return driver.findElement(ERROR).getText();
     }
 }
