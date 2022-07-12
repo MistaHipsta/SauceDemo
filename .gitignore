@@ -1,5 +1,6 @@
 # Default ignored files
 .idea/
 *.iml
-*.ims
+*.iws
+# Maven
 /target/
